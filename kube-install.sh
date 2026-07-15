@@ -54,3 +54,7 @@ sudo systemctl enable crio.service
 
 
 sudo systemctl status crio.service
+
+
+### after execution of this script initialize master node
+#kubeadm init 
