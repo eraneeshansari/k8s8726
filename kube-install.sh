@@ -1,3 +1,4 @@
+##  execute this on every nodes
 #!/bin/bash
 sudo swapoff -a
 
