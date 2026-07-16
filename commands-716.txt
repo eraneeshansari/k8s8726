@@ -1,0 +1,39 @@
+| Command                                                                                 | Short Description                                          |
+| --------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `kubectl get nodes`                                                                     | List all nodes in the Kubernetes cluster.                  |
+| `kubectl get nodes -o wide`                                                             | Display nodes with additional details (IP, OS, etc.).      |
+| `kubectl get pods`                                                                      | List all pods in the current namespace.                    |
+| `kubectl get pods -o wide`                                                              | List pods with additional information such as node and IP. |
+| `kubectl describe pod test`                                                             | Show detailed information about the `test` pod.            |
+| `kubectl describe po mypod`                                                             | Display detailed information about the `mypod` pod.        |
+| `kubectl logs test`                                                                     | View logs from the `test` pod.                             |
+| `kubectl logs mypod`                                                                    | View logs from the `mypod` pod.                            |
+| `kubectl logs mypod -c con1`                                                            | View logs from container `con1` in `mypod`.                |
+| `kubectl logs mypod -c con2`                                                            | View logs from container `con2` in `mypod`.                |
+| `kubectl run test --port 80 --image nginx:latest`                                       | Create a pod named `test` using the NGINX image.           |
+| `kubectl run mypod --port 80 --image nginx:latest --dry-run=client`                     | Generate the pod configuration without creating it.        |
+| `kubectl run mypod --port 80 --image nginx:latest --dry-run=client -o yaml`             | Output the pod manifest in YAML format.                    |
+| `kubectl run mypod --port 80 --image nginx:latest --dry-run=client -o yaml > pod.yaml`  | Save the generated pod YAML to `pod.yaml`.                 |
+| `kubectl create -f pod.yaml`                                                            | Create Kubernetes resources from `pod.yaml`.               |
+| `kubectl exec -it test -- ls`                                                           | Run the `ls` command inside the `test` pod.                |
+| `kubectl exec -it test -- cat /etc/passwd`                                              | Display the `/etc/passwd` file inside the `test` pod.      |
+| `kubectl exec -it test -- cat //etc/passwd`                                             | Display `/etc/passwd` (double `/` is also valid in Linux). |
+| `kubectl exec -it test -- bash`                                                         | Open an interactive Bash shell in the `test` pod.          |
+| `kubectl exec -it mypod -c con1 -- bash`                                                | Open a Bash shell in container `con1` of `mypod`.          |
+| `kubectl exec -it mypod -c con2 -- bash`                                                | Open a Bash shell in container `con2` of `mypod`.          |
+| `kubectl expose pod test --port 80 --type NodePort`                                     | Expose the `test` pod as a NodePort service.               |
+| `kubectl expose pod test --port 80 --type NodePort --dry-run=client -o yaml`            | Generate the NodePort service YAML without creating it.    |
+| `kubectl expose pod test --port 80 --type NodePort --dry-run=client -o yaml > svc.yaml` | Save the generated service YAML to `svc.yaml`.             |
+| `kubectl get service`                                                                   | List all services.                                         |
+| `kubectl get svc`                                                                       | Short form of `kubectl get service`.                       |
+| `kubectl create -f service2.yaml`                                                       | Create resources from `service2.yaml`.                     |
+| `vi pod.yaml`                                                                           | Edit the pod manifest file.                                |
+| `vi svc.yaml`                                                                           | Edit the service manifest file.                            |
+| `vi service2.yaml`                                                                      | Edit the second service manifest file.                     |
+| `vi ~/.bashrc`                                                                          | Edit the Bash shell configuration file.                    |
+| `source ~/.bashrc`                                                                      | Reload the updated Bash configuration.                     |
+| `cp svc.yaml service2.yaml`                                                             | Copy `svc.yaml` to `service2.yaml`.                        |
+| `ls`                                                                                    | List files and directories in the current location.        |
+| `history`                                                                               | Display the shell command history.                         |
+| `kubectl.exe get pods`                                                                  | Windows executable version of `kubectl get pods`.          |
+| `kubectl.exe get svc`                                                                   | Windows executable version of `kubectl get svc`.           |
