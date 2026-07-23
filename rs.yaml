@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myrs
+spec:
+  replicas: 3 
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values: [mango]
+      - key: app
+        operator: NotIn
+        values: [myapp]
+
+  template:
+    metadata:
+      labels:
+        app: mango
+    spec:
+      containers:
+      - name: con1
+        image: nginx:latest
+        ports:
+        - containerPort: 80
