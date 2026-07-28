@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mydep
+  name: mydepvol
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: mydep
@@ -14,9 +14,16 @@ spec:
     spec:
       containers:
       - image: nginx:latest
-        name: nginx
+        name: con1
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: myvol
+          mountPath: /app
+      volumes:
+      - name: myvol
+        persistentVolumeClaim:
+          claimName: myclaim 
 ---
 apiVersion: v1
 kind: Service

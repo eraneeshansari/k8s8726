@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mydep
+  name: hpath
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: mydep
@@ -14,9 +14,23 @@ spec:
     spec:
       containers:
       - image: nginx:latest
-        name: nginx
+        name: con1
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: myvol
+          mountPath: /app
+      - name: con2
+        image: tomcat:latest
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: myvol
+          mountPath: /mydata
+      volumes:
+      - name: myvol
+        hostPath:
+          path: /var/log
 ---
 apiVersion: v1
 kind: Service
