@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+ containers:
+ - name: db
+   image: mysql:latest
+   ports:
+   - containerPort: 3306
+   env:
+   - name: MYSQL_ROOT_PASSWORD
+     valueFrom:
+       secretKeyRef:
+         name: mypass
+         key: pass 
+   - name: MYSQL_DATABASE
+     value: wordpress
+   volumeMounts:
+   - name: myvol
+     mountPath: /app 
+ volumes:
+ - name: myvol
+   secret:
+     secretName: myfile 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: mysql
+  ports:
+  - port: 3306
+    protocol: TCP
+    targetPort: 3306
+
+
+ 

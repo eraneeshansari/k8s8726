@@ -1,0 +1,27 @@
+kubectl config set-credentials user1 --client-certificate=/home/user1/.certs/user1.crt --client-key=/home/user1/.certs/user1.key
+
+ll
+vi .kube/config
+kubectl config set-context user1-context --cluster=kubernetes --user=user1
+vi .kube/config
+kubectl config  get-contexts
+vi .kube/config
+kubectl config -h
+kubectl config set-context -h
+kubectl config set-context --current --cluster=kubernetes --user=user1
+kubectl config get-clusters
+kubectl config get-contexts
+kubectl config set-context --current --cluster=kubernetes --user=user1
+vi .kube/config
+#kubectl config use-context context1
+vi .kube/config
+kubectl config use-context user1-context
+vi .kube/config
+nano .kube/config
+kubectl get pods
+nano .kube/config
+kubectl get pods
+kubectl get pods -n devops
+kubectl -n devops get secrets
+kubectl -n devops get cm
+kubectl -n devops get deploy
